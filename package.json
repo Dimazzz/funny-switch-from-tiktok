@@ -1,6 +1,7 @@
 {
   "name": "funny-ticktok-swith",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "start": "webpack --mode=development --watch",
     "build": "webpack --mode=production --env production --progress"
