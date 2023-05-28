@@ -1,0 +1,21 @@
+{
+  "name": "funny-ticktok-swith",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack --mode=development --watch",
+    "build": "webpack --mode=production --env production --progress"
+  },
+  "browserslist": [
+    "last 4 version"
+  ],
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.3.1",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  }
+}
