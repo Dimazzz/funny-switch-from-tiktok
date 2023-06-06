@@ -1,43 +1,47 @@
 $transitionTime: .8s;
 
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-@mixin fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: $transitionTime;
-  top: 100%;
-  right: -50%;
-}
-
 @mixin fadeIn {
   visibility: visible;
   opacity: 1;
   transition: $transitionTime;
 }
 
-@mixin slider-ellipse($radius) {
+@mixin fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: $transitionTime;
+}
+
+@mixin starFadeIn {
+  @include fadeIn;
+  top: 0;
+  right: 0;
+}
+
+@mixin starFadeOut {
+  @include fadeOut;
+  top: -100%;
+  right: -50%;
+}
+
+@mixin cloudFadeOut {
+  @include fadeOut;
+  top: 100%;
+  right: -50%;
+}
+
+@mixin ellipse($radius) {
   width: $radius;
   height: $radius;
 }
 
-@mixin slider-round-ellipse($radius, $x, $y) {
-  width: $radius;
-  height: $radius;
+@mixin round-hole($radius, $x, $y) {
+  @include ellipse($radius);
   left: $x;
   top: $y;
 }
 
-
-.day-night-switch {
+.dn-switch {
   position: relative;
   display: inline-block;
   aspect-ratio: 2.5 / 1;
@@ -49,35 +53,35 @@ $transitionTime: .8s;
     height: 0;
   }
 
-  &__input:checked + &__slider {
+  &__input:checked + &__wrap {
     background: #1B1D2A;
-    box-shadow: 0px -1.81174px 2.41565px rgba(0, 0, 0, 0.25), 0px 2.41565px 2.41565px rgba(255, 255, 255, 0.94), inset 0px 0.603912px 7.85086px rgba(0, 0, 0, 0.25), inset 0px 4.22738px 5.43521px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.25), 0px 3px 3px rgba(255, 255, 255, 0.94), inset 0px 1px 8px rgba(0, 0, 0, 0.25), inset 0px 4px 6px rgba(0, 0, 0, 0.25);
   }
 
-  &__input:checked + &__slider & {
-    &__slider-round-wrap {
+  &__input:checked + &__wrap & {
+    &__round-wrap {
       transform: translateX(160%);
     }
 
-    &__slider-round {
+    &__round {
       background: #C4C9D2;
-      box-shadow: 0px 2.41565px 2.41565px rgba(0, 0, 0, 0.25), 2.41565px 4.22738px 4.8313px rgba(0, 0, 0, 0.25), inset 0px -3.01956px 2.41565px #373737, inset 1.81174px 2.41565px 2.41565px rgba(255, 255, 255, 0.61);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25), 3px 5px 5px rgba(0, 0, 0, 0.25), inset 0px -3px 3px #373737, inset 2px 2px 2px rgba(255, 255, 255, 0.60);
 
-      &-ellipse {
+      &-n-hole {
         @include fadeIn;
       }
     }
 
-    &__slider-star {
-      @include fadeIn;
+    &__n-star-wrap {
+      @include starFadeIn;
     }
 
-    &__slider-cloud {
-      @include fadeOut;
+    &__d-cloud {
+      @include cloudFadeOut;
     }
   }
 
-  &__slider {
+  &__wrap {
     position: absolute;
     cursor: pointer;
     overflow: hidden;
@@ -88,120 +92,127 @@ $transitionTime: .8s;
 
     transition: $transitionTime;
 
-    box-shadow: 0px -1.81174px 2.41565px rgba(0, 0, 0, 0.25), 0px 2.41565px 2.41565px rgba(255, 255, 255, 0.94), inset 0px 0.603912px 7.85086px rgba(0, 0, 0, 0.25), inset 0px 4.22738px 5.43521px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px -2px 3px rgba(0, 0, 0, 0.25), 0px 3px 3px rgba(255, 255, 255, 0.94), inset 0px 1px 8px rgba(0, 0, 0, 0.25), inset 0px 4px 5px rgba(0, 0, 0, 0.25);
     background: #3A8DCA;
     border-radius: 120px;
+  }
 
-    &-round-wrap {
-      position: absolute;
-      z-index: 20;
+  &__round {
+    position: relative;
+    z-index: 5;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #FED62E;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25), 3px 4px 5px rgba(0, 0, 0, 0.25), inset 0px -3px 3px #B49A2C, inset 2px 3px 3px rgba(254, 255, 237, 0.60);
+    border-radius: 50%;
+    transition: $transitionTime;
 
-      aspect-ratio: 1 / 1;
-      height: 92%;
-      left: 2%;
-      top: 4%;
-      transition: $transitionTime;
-    }
-
-    &-round {
-      position: relative;
-      z-index: 5;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background: #FED62E;
-      box-shadow: 0px 2.41565px 2.41565px rgba(0, 0, 0, 0.25), 2.41565px 4.22738px 4.8313px rgba(0, 0, 0, 0.25), inset 0px -3.01956px 2.41565px #B49A2C, inset 1.81174px 2.41565px 2.41565px rgba(254, 255, 237, 0.61);
-      border-radius: 50%;
-      transition: $transitionTime;
-
-      &-ellipse {
-        @include fadeOut;
-        display: block;
-        position: absolute;
-        background: #9DA5B5;
-        box-shadow: inset 0px 0.603912px 2.41565px rgba(0, 0, 0, 0.25);
-        border-radius: 50%;
-
-        &--1 {
-          @include slider-round-ellipse(12%, 34%, 12%);
-        }
-
-        &--2 {
-          @include slider-round-ellipse(32%, 12%, 40%);
-        }
-
-        &--3 {
-          @include slider-round-ellipse(22%, 56%, 42%);
-        }
-      }
-    }
-
-    &-star {
-      position: absolute;
+    &-n-hole {
       @include fadeOut;
-      z-index: 1;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-image: url('data:image/svg+xml,<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.37013 3.68995C3.43367 4.62373 2.28437 5.12445 0.936432 5.17859C2.28437 5.24625 3.41948 5.73344 4.37013 6.66722C5.30659 7.601 5.77482 8.71071 5.77482 10.0099C5.77482 8.71071 6.24305 7.601 7.17952 6.66722C8.11598 5.73344 9.25109 5.23272 10.599 5.17859C9.25109 5.12445 8.11598 4.62373 7.17952 3.68995C6.24305 2.75617 5.77482 1.64646 5.77482 0.34729C5.77482 1.64646 5.30659 2.75617 4.37013 3.68995Z" fill="white"/></svg>');
-      aspect-ratio: 1 / 1;
+      display: block;
+      position: absolute;
+      background: #9DA5B5;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
 
-      &--1 {
-        left: 23%;
-        top: 22%;
-        width: 4%;
+      &:nth-of-type(1) {
+        @include round-hole(12%, 34%, 12%);
       }
 
-      &--2 {
-        left: 36%;
-        top: 30%;
-        width: 2%;
+      &:nth-of-type(2) {
+        @include round-hole(32%, 12%, 40%);
       }
 
-      &--3 {
-        left: 14%;
-        top: 38%;
-        width: 3%;
-      }
-
-      &--4 {
-        left: 49%;
-        top: 45%;
-        width: 2%;
-      }
-
-      &--5 {
-        left: 58%;
-        top: 38%;
-        width: 2%;
-      }
-
-      &--6 {
-        left: 18%;
-        top: 68%;
-        width: 2%;
-      }
-
-      &--7 {
-        left: 26%;
-        top: 56%;
-        width: 2%;
-      }
-
-      &--8 {
-        left: 38%;
-        top: 64%;
-        width: 2%;
-      }
-
-      &--9 {
-        left: 52%;
-        top: 64%;
-        width: 5%;
+      &:nth-of-type(3) {
+        @include round-hole(22%, 56%, 42%);
       }
     }
   }
 
-  &__slider-ellipse {
+  &__round-wrap {
+    position: absolute;
+    z-index: 20;
+
+    aspect-ratio: 1 / 1;
+    height: 92%;
+    left: 2%;
+    top: 4%;
+    transition: $transitionTime;
+  }
+
+  &__n-star-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    @include starFadeOut;
+  }
+
+  &__n-star {
+    position: absolute;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml,<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.37013 3.68995C3.43367 4.62373 2.28437 5.12445 0.936432 5.17859C2.28437 5.24625 3.41948 5.73344 4.37013 6.66722C5.30659 7.601 5.77482 8.71071 5.77482 10.0099C5.77482 8.71071 6.24305 7.601 7.17952 6.66722C8.11598 5.73344 9.25109 5.23272 10.599 5.17859C9.25109 5.12445 8.11598 4.62373 7.17952 3.68995C6.24305 2.75617 5.77482 1.64646 5.77482 0.34729C5.77482 1.64646 5.30659 2.75617 4.37013 3.68995Z" fill="white"/></svg>');
+    aspect-ratio: 1 / 1;
+
+    &:nth-of-type(1) {
+      left: 23%;
+      top: 22%;
+      width: 4%;
+    }
+
+    &:nth-of-type(2) {
+      left: 36%;
+      top: 30%;
+      width: 2%;
+    }
+
+    &:nth-of-type(3) {
+      left: 14%;
+      top: 38%;
+      width: 3%;
+    }
+
+    &:nth-of-type(4) {
+      left: 49%;
+      top: 45%;
+      width: 2%;
+    }
+
+    &:nth-of-type(5) {
+      left: 56%;
+      top: 28%;
+      width: 2%;
+    }
+
+    &:nth-of-type(6) {
+      left: 18%;
+      top: 68%;
+      width: 2%;
+    }
+
+    &:nth-of-type(7) {
+      left: 26%;
+      top: 56%;
+      width: 2%;
+    }
+
+    &:nth-of-type(8) {
+      left: 38%;
+      top: 64%;
+      width: 2%;
+    }
+
+    &:nth-of-type(9) {
+      left: 52%;
+      top: 64%;
+      width: 5%;
+    }
+  }
+
+  &__round-glow {
     position: absolute;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
@@ -209,27 +220,27 @@ $transitionTime: .8s;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    &--1 {
-      @include slider-ellipse(180%);
+    &:nth-of-type(1) {
+      @include ellipse(180%);
     }
 
-    &--2 {
-      @include slider-ellipse(260%);
+    &:nth-of-type(2) {
+      @include ellipse(260%);
     }
 
-    &--3 {
-      @include slider-ellipse(340%);
+    &:nth-of-type(3) {
+      @include ellipse(340%);
     }
   }
 
-  &__slider-cloud {
+  &__d-cloud {
     display: block;
     width: 100%;
     height: 100%;
     position: absolute;
     background-repeat: no-repeat;
     background-size: cover;
-    @include fadeIn();
+    @include fadeIn;
 
     &--primary {
       right: -10%;
