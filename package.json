@@ -1,22 +1,54 @@
 {
-  "name": "funny-ticktok-swith",
-  "version": "1.0.0",
+  "name": "day-night-switch",
+  "description": "Day night switch from tik-tok",
+  "version": "0.1.0",
   "license": "MIT",
-  "scripts": {
-    "start": "webpack --mode=development --watch",
-    "build": "webpack --mode=production --env production --progress"
-  },
-  "browserslist": [
-    "last 4 version"
-  ],
+  "author": "Dmitrii Shap",
   "devDependencies": {
-    "css-loader": "^6.8.1",
-    "html-webpack-plugin": "^5.5.1",
-    "mini-css-extract-plugin": "^2.7.6",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.3.1",
-    "webpack": "^5.84.1",
-    "webpack-cli": "^5.1.1",
-    "webpack-dev-server": "^4.15.0"
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.2.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.4.2",
+    "styled-components": "^6.0.1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "styled-components": "*"
+  },
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "start": "react-scripts start",
+    "build-example": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "keywords": [
+    "react",
+    "tik-tok",
+    "tiktok",
+    "day",
+    "night",
+    "switch"
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
