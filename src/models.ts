@@ -1,7 +1,7 @@
-import {InputHTMLAttributes} from "react";
+import {CSSProperties, InputHTMLAttributes} from "react";
 
 export interface LabelProps {
-    width?: string;
+    width?: CSSProperties["width"];
 }
 
 export type DayNightSwitchProps = InputHTMLAttributes<HTMLInputElement> & LabelProps;
