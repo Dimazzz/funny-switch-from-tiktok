@@ -33,18 +33,18 @@ jobs:
         run: yarn install
       - name: Build switch
         run: yarn build
-      - name: to example folder
-        run: cd example
       - name: Install modules example
         run: yarn install
+        working-directory: ./example
       - name: Build example
         run: yarn build-example
+        working-directory: ./example
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./build
+          source: ./example/build
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
