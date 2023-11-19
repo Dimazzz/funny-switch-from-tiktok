@@ -1,5 +1,6 @@
 ### React component - Day night switch from tik-tok
 
+https://dmitrii-shap.github.io/day-night-switch/
 ````
 import React, { useState } from 'react'
 import DayNightSwitch from "react-day-night-switch";
