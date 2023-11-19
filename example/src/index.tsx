@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <DayNightSwitch/>
+        <DayNightSwitch />
     </React.StrictMode>
 );
