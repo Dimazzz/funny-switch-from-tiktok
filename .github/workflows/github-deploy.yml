@@ -34,7 +34,7 @@ jobs:
       - name: Build switch
         run: yarn build
       - name: to example folder
-      - run: cd example
+        run: cd example
       - name: Install modules example
         run: yarn install
       - name: Build example
