@@ -33,8 +33,10 @@ jobs:
         run: yarn install
       - name: Build switch
         run: yarn build
+      - name: to example folder
+      - run: cd example
       - name: Install modules example
-        run: [cd example, yarn install]
+        run: yarn install
       - name: Build example
         run: yarn build-example
       - name: Setup Pages
