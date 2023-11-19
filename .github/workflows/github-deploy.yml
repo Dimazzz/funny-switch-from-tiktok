@@ -1,4 +1,4 @@
-name: Deploy project
+name: deploy project
 
 on:
   # Runs on pushes targeting the default branch
