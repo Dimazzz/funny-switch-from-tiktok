@@ -41,6 +41,7 @@
     "type": "git",
     "url": "https://github.com/Dmitrii-shap/day-night-switch"
   },
+  "homepage": "https://dmitrii-shap.github.io/day-night-switch/",
   "browserslist": {
     "production": [
       ">0.2%",
