@@ -7500,9 +7500,6 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-"react-day-night-switch@file:../dist":
-  version "0.0.0"
-
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
@@ -8085,6 +8082,11 @@ shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
+
+shd-react-day-night-switch@0.1.3:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/shd-react-day-night-switch/-/shd-react-day-night-switch-0.0.1.tgz#1679076c5513b4b43b4c467c1739b15e5079001d"
+  integrity sha512-5xXUK5adeSas/yvJmcG6xIASMQ21OZOLgaI7dmBt6mVObL3QQgAOWITHyzDZz52o8mC3CEK8+lnok2wDbzx3Wg==
 
 shebang-command@^2.0.0:
   version "2.0.0"

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import DayNightSwitch from "react-day-night-switch";
+import DayNightSwitch from "shd-react-day-night-switch"
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

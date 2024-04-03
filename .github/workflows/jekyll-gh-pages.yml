@@ -29,11 +29,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install modules switch
-        run: yarn install
-      - name: Build switch
-        run: yarn build
-      - name: Install modules example
+      - name: Install packages for example
         run: yarn install
         working-directory: ./example
       - name: Build example

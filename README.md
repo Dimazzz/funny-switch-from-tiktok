@@ -1,9 +1,19 @@
 ### React component - Day night switch from tik-tok
 
-https://dmitrii-shap.github.io/day-night-switch/
-````
+<a href="https://dmitrii-shap.github.io/day-night-switch/" target="_blank">example</a>
+
+```
+"peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "styled-components": "*"
+},
+```
+
+### How use
+```tsx
 import React, { useState } from 'react'
-import DayNightSwitch from "react-day-night-switch";
+import DayNightSwitch from "shd-react-day-night-switch";
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -15,7 +25,7 @@ const App = () => {
     />
   )
 }
-````
+```
 
 ![day](https://github.com/Dimazzz/funny-switch-from-tiktok/blob/master/pic/day.png?raw=true)
 

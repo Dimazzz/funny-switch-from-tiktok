@@ -1,10 +1,10 @@
-import {CSSProperties, InputHTMLAttributes} from "react";
+import {InputHTMLAttributes} from "react";
 
 export interface LabelProps {
-    width?: CSSProperties["width"];
+    width?: string;
 }
 
-export type DayNightSwitchProps = InputHTMLAttributes<HTMLInputElement> & LabelProps;
+export type DayNightSwitchProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'style' | 'height' | "width"> & LabelProps;
 
 export interface RoundGlowProps {
     size: `${number}%`;
