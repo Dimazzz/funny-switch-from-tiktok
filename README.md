@@ -2,6 +2,8 @@
 
 <a href="https://dmitrii-shap.github.io/day-night-switch/" target="_blank">example</a>
 
+<a href="https://www.npmjs.com/package/shd-react-day-night-switch" target="_blank">npm</a>
+
 ```
 "peerDependencies": {
     "react": "*",
